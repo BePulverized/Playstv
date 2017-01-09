@@ -1,0 +1,146 @@
+﻿@model Plays.tv_Web.Controllers.WatchController.ViewModel
+
+
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Free Vloader Web Template | Home :: w3layouts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <style type="text/css"></style>
+</head>
+<body>
+    <div class="header">
+        <div class="wrap pos-relative">
+            <div class="logo">
+                <a href="index.html"><img src="~/images/logo.png" alt="" /></a>
+            </div>
+            <div class="float-left">
+                <div class="clear"></div>
+                <div class="search">
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                    {
+                        @Html.TextBox("Search");
+                        <div>
+                            <input type="submit" value="" />
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="float-right">
+                <div class="top-menu">
+                    <ul>
+                        @if (Session["LoggedAccountname"] != null)
+                        {
+                            <li>Welcome @Session["LoggedAccountname"]</li>
+                            <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                            <li><a href="feedback.html">Feedback</a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="menu">
+                    <ul>
+                        <li>
+                            <a href="google.com">Categories <span></span></a>
+                            <div class="sub-menu">
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <a href="google.com">Channels <span></span></a>
+                            <div class="sub-menu">
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <a href="google.com">More <span></span></a>
+                            <div class="sub-menu">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="wrap">
+        <div class="content">
+            <div class="vdo-log margin_bottom">
+                @Model.Video.Title
+                <div class="video-player">
+                    <video id="videoPlay" width="630" height="400" controls autoplay>
+                        <source src="@Url.Action("GetVideo", "Watch", new { id = Model.Video.ID } )" />
+                    </video> 
+                </div>
+            </div>
+            @Html.ActionLink("👍 Like", "Like", "Watch", new {style="margin-left: 20px; background: url("})
+            @Html.ActionLink("👎 Dislike", "Dislike", "Watch")
+            @if (Session["LoggedAccountname"] != null)
+            {
+                using (Html.BeginForm("React", "Watch", FormMethod.Post, new { @class = "reaction" }))
+                {
+                     @Html.TextBox("React", "", new {style="width:500px; margin-left: 20px; margin-top: 20px;"})
+                     
+                     <div>
+                         <input type="submit" value="React"/>
+                     </div>
+                 }
+            }
+            @foreach (var item in @Model.Reactions)
+            {
+                <div class="vdo-list">
+                    <div class="vdo-info">
+                        <div class="vdo-title"><a href="preview.html"><h3>@item.User.Name</h3></a></div>
+                        <div class="vdo-desc">@item.Text</div>
+                        <div class="vdo-detail"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            }
+
+
+        </div>
+        <div class="float-left">
+            <div class="sidebox-one">
+                <div class="sidebox-image">
+                    <img src="@Url.Action("RenderImage", new {id = @Model.Video.ID})" alt="thumbnail" width="300px" height="200px" />
+                </div>
+                <div class="sb-stats">
+                    <div class="sb-stats-logo">
+                        <img src="~/images/users.jpg" alt="users" />
+                    </div>
+                    <div class="sb-stats-text"> @Model.Video.Feedback.Like<span>Likes</span></div>
+                    <div class="sb-stats-text"> @Model.Video.Feedback.Dislike <span>Dislikes</span></div>
+                    <div class="sb-stats-text"> @Model.Video.Views <span>Views</span></div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+
+
+        <div class="clear"></div>
+
+    </div>
+</body>
+</html>

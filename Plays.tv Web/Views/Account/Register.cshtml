@@ -1,0 +1,41 @@
+﻿@model Plays.tv_App.User
+@{
+
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <table>
+        <tr>
+            <td>@Html.LabelFor(a => a.Name)</td>
+            <td>@Html.TextBoxFor(a => a.Name)</td>
+            <td>@Html.ValidationMessageFor(a => a.Name)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Email)</td>
+            <td>@Html.TextBoxFor(a => a.Email)</td>
+            <td>@Html.ValidationMessageFor(a => a.Email)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Nickname)</td>
+            <td>@Html.TextBoxFor(a => a.Nickname)</td>
+            <td>@Html.ValidationMessageFor(a => a.Nickname)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Password)</td>
+            <td>@Html.PasswordFor(a => a.Password)</td>
+            <td>@Html.ValidationMessageFor(a => a.Password)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Login" />
+            </td>
+            <td></td>
+        </tr>
+    </table>
+}

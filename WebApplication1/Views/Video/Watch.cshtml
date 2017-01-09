@@ -1,0 +1,62 @@
+﻿@using System.Web.Hosting
+@using System.Web.UI.HtmlControls
+@using Microsoft.Web.Helpers
+@model Plays.tv_App.Video
+
+@{
+    ViewBag.Title = "Watch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/c/video.js"></script>
+</head>
+
+    <video id="video1" class="video-js vjs-default-skin" width="640" height="480"
+           data-setup='{"controls" : true, "autoplay" : false, "preload" : "auto"}'>
+        <source src="~/VideoFiles/BEPULVERIZED_19_dec_2016_18_04_3325.flv" type="video/x-flv">
+    </video>
+
+<h2>Watch</h2>
+
+<div>
+    <h4>Video</h4>
+    
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Views)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Views)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+        <dd>
+
+        </dd>
+
+    </dl>
+
+
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "VideoList")
+</p>

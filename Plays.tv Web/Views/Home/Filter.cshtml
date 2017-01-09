@@ -1,0 +1,230 @@
+﻿@using System.Diagnostics.Eventing.Reader
+@model System.Collections.Generic.List<Plays.tv_App.Video>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Plays.tv</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+    <div class="header">
+        <div class="wrap pos-relative">
+            <div class="logo">
+                <a href="index.html"><img src="~/images/logo.png" alt="" /></a>
+            </div>
+            <div class="float-left">
+                <div class="clear"></div>
+                <div class="search">
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                    {
+                        @Html.TextBox("Search");
+                        <div>
+                            <input type="submit" value="" />
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="float-right">
+                <div class="top-menu">
+                    <ul>
+                        @if (Session["LoggedAccountname"] != null)
+                        {
+                            <li>Welcome @Session["LoggedAccountname"]</li>
+                            <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                            <li><a href="feedback.html">Feedback</a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="menu">
+                    <ul>
+                        <li>
+                            <a href="#">Categories <span></span></a>
+                            <div class="sub-menu">
+                                <ul>
+                                    <li><a href="#">News</a></li>
+                                    <li><a href="#">Television</a></li>
+                                    <li><a href="#">Sports</a></li>
+                                    <li><a href="#">Science</a></li>
+                                    <li><a href="#">Business</a></li>
+                                    <li><a href="#">Pets</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#">Music</a></li>
+                                    <li><a href="#">Movies</a></li>
+                                    <li><a href="#">Comedy</a></li>
+                                    <li><a href="#">Animation</a></li>
+                                    <li><a href="#">Games</a></li>
+                                    <li><a href="#">Autos</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">Channels <span></span></a>
+                            <div class="sub-menu">
+                                <ul>
+                                    <li><a href="#">News</a></li>
+                                    <li><a href="#">Television</a></li>
+                                    <li><a href="#">Sports</a></li>
+                                    <li><a href="#">Science</a></li>
+                                    <li><a href="#">Business</a></li>
+                                    <li><a href="#">Pets</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#">Music</a></li>
+                                    <li><a href="#">Movies</a></li>
+                                    <li><a href="#">Comedy</a></li>
+                                    <li><a href="#">Animation</a></li>
+                                    <li><a href="#">Games</a></li>
+                                    <li><a href="#">Autos</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">More <span></span></a>
+                            <div class="sub-menu">
+                                <ul>
+                                    <li><a href="#">News</a></li>
+                                    <li><a href="#">Television</a></li>
+                                    <li><a href="#">Sports</a></li>
+                                    <li><a href="#">Science</a></li>
+                                    <li><a href="#">Business</a></li>
+                                    <li><a href="#">Pets</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#">Music</a></li>
+                                    <li><a href="#">Movies</a></li>
+                                    <li><a href="#">Comedy</a></li>
+                                    <li><a href="#">Animation</a></li>
+                                    <li><a href="#">Games</a></li>
+                                    <li><a href="#">Autos</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="wrap">
+        <div class="content">
+
+            <div class="vdo-log">
+                <div class="heading">
+                    <h2>@Html.ActionLink("Recent", "Filter", "Home", new { id = 1 }, null) @Html.ActionLink("Title A-Z", "Filter", "Home", new { id = 2 }, null),@Html.ActionLink("User A-Z", "Filter", "Home", new { id = 3 }, null) </h2>
+                </div>
+                @foreach (var item in @Model)
+                {
+                    <div class="vdo-list">
+                        <div class="vdo-thumb">
+
+                            <img src="@Url.Action("RenderImage", new {id = item.ID})" alt="thumbnail" width="120" height="120" />
+                        </div>
+                        <div class="vdo-info">
+                            <div class="vdo-title">
+                               
+                                    
+                              
+                                @Html.ActionLink(@item.Title, "Index", "Watch", new { id = item.ID }, null)
+                            </div>
+                            <div class="vdo-desc">@item.Game</div>
+                            <div class="vdo-detail">
+                                Category: @item.Category.Name
+                                <div class="vdo-details-author">Author: @item.Author.Name</div>
+                                <div class="vdo-detail-views">Views: @item.Views</div>
+                                <div class="vdo-detail-likedislike">Likes:@item.Feedback.Like Dislikes: @item.Feedback.Dislike</div>
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                }
+
+
+                
+            </div>
+        </div>
+        <div class="float-left">
+            <div class="sidebox-one">
+                <div class="sidebox-image"><img src="~/images/ad_250x300.png" alt="ad" /></div>
+                <div class="sb-stats">
+                    <div class="sb-stats-logo"><img src="~/images/users.jpg" alt="users" /></div>
+                    <div class="sb-stats-text">1,00,000 <span>Searchers</span></div>
+                    <div class="sb-stats-text">5,00,000 <span>Active Users</span></div>
+                    <div class="sb-stats-text">30,000 <span>Views</span></div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="footer">
+            <div class="footer-block">
+                <div class="heading3">Home</div>
+                <div class="footer-list">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">Channels</a></li>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-block">
+                <div class="heading3">Top Categories</div>
+                <div class="footer-list">
+                    <ul>
+                        <li><a href="#">Hollywood</a></li>
+                        <li><a href="#">Sports</a></li>
+                        <li><a href="#">Animation</a></li>
+                        <li><a href="#">Movies</a></li>
+                        <li><a href="#">Comedy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-block">
+                <div class="heading3">Most Rated</div>
+                <div class="footer-list">
+                    <ul>
+                        <li><a href="#">Lorem ipsum dolor</a></li>
+                        <li><a href="#">Aenean quis turpis</a></li>
+                        <li><a href="#">eget sagittis risus</a></li>
+                        <li><a href="#">sollicitudin dui</a></li>
+                        <li><a href="#">vel varius felis</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-block">
+                <div class="heading3">Our Sponsers</div>
+                <div class="footer-list">
+                    <ul>
+                        <li><a href="#">Lorem ipsum dolor</a></li>
+                        <li><a href="#">Aenean quis turpis</a></li>
+                        <li><a href="#">eget sagittis risus</a></li>
+                        <li><a href="#">sollicitudin dui</a></li>
+                        <li><a href="#">vel varius felis</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="sub-footer">
+                <div class="copy">&copy;  All Rights Reserved - Design by <a href="http://w3layouts.com">W3Layouts</a></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>
