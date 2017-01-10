@@ -104,6 +104,8 @@ namespace Plays.tv_App
                 FileInfo[] Files = d.GetFiles("*.mp4"); //Getting Text files
                 string str = "";
                 lbVideos.Items.Clear();
+                cbGame.Items.Clear();
+                cbCat.Items.Clear();
                 foreach (FileInfo file in Files)
                 {
                     str = file.Name;

@@ -16,22 +16,33 @@ namespace Plays.tv_Web.Controllers
         private VideoRepo video = new VideoRepo(new VideoSQLiteContext());
         private ReactionRepo reaction = new ReactionRepo(new ReactionSQLContext());
         
+
         // GET: Watch
+        [HttpGet]
         public ActionResult Index(int id)
         {
-            if (Convert.ToInt32(TempData["Visited"]) != 1)
+            try
             {
-                video.View(id);
-                TempData["visited"] = 1;
+                if (Convert.ToInt32(TempData["Visited"]) != 1)
+                {
+                    video.View(id);
+                    TempData["visited"] = 1;
+                }
+                TempData["videoid"] = Convert.ToString(id);
+                ViewModel model = new ViewModel();
+                model.Video = video.GetVideo(id);
+                model.Reactions = reaction.GetReactionsForVideo(id);
+
+
+                return View(model);
             }
-            TempData["videoid"] = Convert.ToString(id);
-            ViewModel model = new ViewModel();
-            model.Video = video.GetVideo(id);
-            model.Reactions = reaction.GetReactionsForVideo(id);
-            
-            
-            return View(model);
+            catch (Exception ex)
+            {
+                return new EmptyResult();
+            }
         }
+
+        
 
         public ActionResult GetVideo(int id)
         {
