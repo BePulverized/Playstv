@@ -35,9 +35,16 @@ namespace Plays.tv_App.Controllers
             return context.CreateUser(new User(0, name, email, password, nickname, "test.png"));
         }
 
-        public string GetLatestNotification()
+        public bool Delete(int id)
         {
-            return context.GetLatestNotification(LoggedUser.ID);
+            return context.Delete(id);
         }
+
+        public bool CreateAdmin(string name, string email, string password, Permissions permisson)
+        {
+            return context.CreateAdmin(new Admin(0, name, email, password, permisson));
+        }
+
+        
     }
 }

@@ -8,10 +8,20 @@ namespace Plays.tv_App.Database
 {
     public class AccountMemoryContext:IAccountContext
     {
-        public List<Account> Users { get; private set; }
-        public List<Notification> Notifications { get; private set; }
+        public List<Account> Users = new List<Account>()
+        {
+            new Admin(0, "Jordy", "jordy150@gmail.com", "hoi123", Permissions.FULLCONTROL),
+            new Admin(1, "Jan", "roelofsen@gmail.com", "jan123", Permissions.FULLCONTROL),
+            new User(2, "Jeroen", "jeroen@gmail.com", "hoi123", "Bossintraining", string.Empty),
+            new User(3, "Laurent", "saltyscrub@gmail.com", "hoi123", "TheSaltyScrub", string.Empty)
+
+
+        };
+
+       
         public Account Login(string username, string pw)
         {
+            GetAll();
             Account returnaccount = null;
             foreach (Account account in Users)
             {
@@ -25,16 +35,7 @@ namespace Plays.tv_App.Database
 
         public List<Account> GetAll()
         {
-            Users = new List<Account>();
-            Users.Add(new Admin(0, "Jordy", "jordy150@gmail.com", "hoi123", Permissions.FULLCONTROL));
-            Users.Add(new Admin(1, "Jan", "roelofsen@gmail.com", "jan123", Permissions.FULLCONTROL));
-            Users.Add(new User(2, "Jeroen", "jeroen@gmail.com", "hoi123", "Bossintraining", string.Empty));
-            Users.Add(new User(2, "Laurent", "saltyscrub@gmail.com", "hoi123", "TheSaltyScrub", string.Empty));
-
-
             return Users;
-
-
         }
 
         public bool Delete(int id)
@@ -52,6 +53,7 @@ namespace Plays.tv_App.Database
 
         public bool CreateUser(User user)
         {
+            
             Users.Add(user);
             return true;
         }
