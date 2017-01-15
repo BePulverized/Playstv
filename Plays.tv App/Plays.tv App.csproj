@@ -113,6 +113,7 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\ReactionController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Database\AccountMemoryContext.cs" />
     <Compile Include="Database\AccountSQLiteContext.cs" />
     <Compile Include="Database\Database.cs" />
     <Compile Include="Database\GameSQLiteContext.cs" />

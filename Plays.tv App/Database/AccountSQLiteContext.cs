@@ -195,29 +195,7 @@ namespace Plays.tv.Database
         {
             throw new NotImplementedException();
         }
-        // Deze methode haalt de nieuwste notificatie op van een gebruiker :Notimplemented
-        public string GetLatestNotification(int accountid)
-        {
-            string notification = String.Empty;
-            
-            using (SqlConnection connection = Database.Connection)
-            {
-                string query = "select top 1 n.TEXT from notification n where n.ACCOUNT_ID = @accountid ";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@accountid", accountid);
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            notification = reader.GetString(0);
-                        }
-                    }
-                }
-            }
-            return notification;
-        }
+        
     }
 }
 

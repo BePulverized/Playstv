@@ -15,6 +15,6 @@ namespace Plays.tv_App.Database
         bool CreateUser(User user);
         bool CreateAdmin(Admin admin);
 
-        string GetLatestNotification(int accountid);
+       
     }
 }
