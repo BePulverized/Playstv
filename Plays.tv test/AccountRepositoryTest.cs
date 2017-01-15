@@ -8,7 +8,7 @@ using Plays.tv_App.Database;
 namespace Plays.tv_test
 {
     [TestClass]
-    public class AccountContextTest
+    public class AccountRepositoryTest
     {
         AccountController accountRepo = new AccountController(new AccountMemoryContext());
         [TestMethod]

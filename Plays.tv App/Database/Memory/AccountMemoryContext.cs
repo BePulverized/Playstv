@@ -8,7 +8,7 @@ namespace Plays.tv_App.Database
 {
     public class AccountMemoryContext:IAccountContext
     {
-        public List<Account> Users = new List<Account>()
+        private List<Account> Users = new List<Account>()
         {
             new Admin(0, "Jordy", "jordy150@gmail.com", "hoi123", Permissions.FULLCONTROL),
             new Admin(1, "Jan", "roelofsen@gmail.com", "jan123", Permissions.FULLCONTROL),

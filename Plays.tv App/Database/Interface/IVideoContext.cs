@@ -10,7 +10,7 @@ namespace Plays.tv_App.Database
     {
         List<Video> GetAll();
         List<Video> GetVideosbyGame(Game game);
-        Video Insert(Video video);
+        bool Insert(Video video);
         bool Update(Video video);
         bool Delete(int id);
 

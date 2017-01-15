@@ -109,20 +109,22 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\GameController.cs" />
-    <Compile Include="Controllers\ReactionController.cs" />
-    <Compile Include="Controllers\VideoController.cs" />
-    <Compile Include="Database\AccountMemoryContext.cs" />
-    <Compile Include="Database\AccountSQLiteContext.cs" />
+    <Compile Include="Repository\AccountController.cs" />
+    <Compile Include="Repository\GameController.cs" />
+    <Compile Include="Repository\ReactionController.cs" />
+    <Compile Include="Repository\VideoController.cs" />
+    <Compile Include="Database\Memory\AccountMemoryContext.cs" />
+    <Compile Include="Database\Sql\AccountSQLiteContext.cs" />
     <Compile Include="Database\Database.cs" />
-    <Compile Include="Database\GameSQLiteContext.cs" />
-    <Compile Include="Database\IAccountContext.cs" />
-    <Compile Include="Database\IGameContext.cs" />
-    <Compile Include="Database\IReactionContext.cs" />
-    <Compile Include="Database\IVideoContext.cs" />
-    <Compile Include="Database\ReactionSQLContext.cs" />
-    <Compile Include="Database\VideoSQLiteContext.cs" />
+    <Compile Include="Database\Memory\GameMemoryContext.cs" />
+    <Compile Include="Database\Sql\GameSQLiteContext.cs" />
+    <Compile Include="Database\Interface\IAccountContext.cs" />
+    <Compile Include="Database\Interface\IGameContext.cs" />
+    <Compile Include="Database\Interface\IReactionContext.cs" />
+    <Compile Include="Database\Interface\IVideoContext.cs" />
+    <Compile Include="Database\Sql\ReactionSQLContext.cs" />
+    <Compile Include="Database\Memory\VideoMemoryContext.cs" />
+    <Compile Include="Database\Sql\VideoSQLiteContext.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

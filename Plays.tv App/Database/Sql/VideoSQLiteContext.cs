@@ -82,7 +82,7 @@ namespace Plays.tv.Database
             return result;
         }
         // Used when uploading a video. The data from this video gets saved to the database
-        public Video Insert(Video video)
+        public bool Insert(Video video)
         {
             using (SqlConnection connection = new SqlConnection(Database.Connection.ConnectionString))
             {
@@ -104,6 +104,7 @@ namespace Plays.tv.Database
                     {
                         connection.Open();
                         command.ExecuteNonQuery();
+                        return true;
 
                     }
                     catch (SqlException ex)
@@ -113,7 +114,7 @@ namespace Plays.tv.Database
 
                 }
             }
-            return video;
+            return false;
         }
 
         public bool Update(Video video)

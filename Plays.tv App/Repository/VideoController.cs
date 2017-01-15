@@ -21,7 +21,7 @@ namespace Plays.tv_App.Controllers
             return context.GetVideosByUser(user);
         }
 
-        public Video Insert(Video video)
+        public bool Insert(Video video)
         {
             return context.Insert(video);
         }
