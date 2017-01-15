@@ -8,7 +8,7 @@ namespace Plays.tv_test
     [TestClass]
     public class GameRepositoryTest
     {
-        private GameController gamerepo = new GameController(new GameMemoryContext());
+        private GameRepository gamerepo = new GameRepository(new GameMemoryContext());
         [TestMethod]
         public void GetAllGames()
         {

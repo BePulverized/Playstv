@@ -109,10 +109,9 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Repository\AccountController.cs" />
-    <Compile Include="Repository\GameController.cs" />
-    <Compile Include="Repository\ReactionController.cs" />
-    <Compile Include="Repository\VideoController.cs" />
+    <Compile Include="Repository\AccountRepository.cs" />
+    <Compile Include="Repository\GameRepository.cs" />
+    <Compile Include="Repository\VideoRepository.cs" />
     <Compile Include="Database\Memory\AccountMemoryContext.cs" />
     <Compile Include="Database\Sql\AccountSQLiteContext.cs" />
     <Compile Include="Database\Database.cs" />

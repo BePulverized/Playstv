@@ -21,8 +21,8 @@ namespace Plays.tv_App
         //Recording
         private Recording rec;
         //Database 
-        private GameController game;
-        private VideoController video;
+        private GameRepository game;
+        private VideoRepository video;
         private List<Category> combocat;
         private List<Game> combogame;
         private List<string> Games;
@@ -32,8 +32,8 @@ namespace Plays.tv_App
             InitializeComponent();
             appTimer.Start();
             rec = new Recording();
-            video = new VideoController(new VideoSQLiteContext());
-            game = new GameController(new GameSQLiteContext());
+            video = new VideoRepository(new VideoSQLiteContext());
+            game = new GameRepository(new GameSQLiteContext());
             Games = new List<string>() {"League of legends", "Overwatch", "Rocket League"};
             combocat = game.GetAllCats();
             combogame = game.GetAll();
@@ -122,7 +122,7 @@ namespace Plays.tv_App
                 {
                     cbCat.Items.Add(category.ToString());
                 }
-                lbName.Text = AccountController.LoggedUser.Name;
+                lbName.Text = AccountRepository.LoggedUser.Name;
             }
             catch (Exception ex)
             {
@@ -168,7 +168,7 @@ namespace Plays.tv_App
                     byte[] thumbnail =
                         File.ReadAllBytes(@"C:\\Users\\BePulverized\\Videos\\Recordings" + @"\\" +
                                            lbVideos.SelectedItem.ToString() + ".jpg");
-                    Video videoUpload = new Video((User) AccountController.LoggedUser, 0, tbTitle.Text,
+                    Video videoUpload = new Video((User) AccountRepository.LoggedUser, 0, tbTitle.Text,
                         combocat[cbCat.SelectedIndex], combogame[cbGame.SelectedIndex], lbVideos.SelectedItem.ToString(), bytes, thumbnail);
                     video.Insert(videoUpload);
                     System.IO.Directory.CreateDirectory(@"C:\\Users\\BePulverized\\Videos\\Uploads" + @"\\" +

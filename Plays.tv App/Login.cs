@@ -14,17 +14,17 @@ namespace Plays.tv_App
 {
     public partial class Login : Form
     {
-        private AccountController acc;
+        private AccountRepository acc;
         public Login()
         {
-            acc = new AccountController(new AccountSQLiteContext());
+            acc = new AccountRepository(new AccountSQLiteContext());
             InitializeComponent();
         }
 
         private void btLogin_Click(object sender, EventArgs e)
         {
-            AccountController.LoggedUser = acc.Login(tbUsername.Text, tbPassword.Text);
-            Account activeUser = AccountController.LoggedUser;
+            AccountRepository.LoggedUser = acc.Login(tbUsername.Text, tbPassword.Text);
+            Account activeUser = AccountRepository.LoggedUser;
             try
             {
                 //Check if their is already a active user

@@ -15,73 +15,7 @@ namespace Plays.tv.Database
 {
     public class VideoSQLiteContext:IVideoContext
     {
-        public List<Video> GetAll()
-        {
-            List<Video> result = new List<Video>();
-            //using (SqlConnection connection = Database.Connection)
-            //{
-            //    string query = "SELECT * FROM VIDEO ORDER BY Id";
-            //    using (SqlCommand command = new SqlCommand(query, connection))
-            //    {
-            //        using (SqlDataReader reader = command.ExecuteReader())
-            //        {
-            //            while (reader.Read())
-            //            {
-            //                int id = reader.GetInt32(0);
-            //                User author = new User(1, "Bepulverized", "test", "password", "BePulverized", "test.png", 0);
-            //                string title = reader.GetString(3);
-            //                int views = reader.GetInt32(2);
-            //                int likes = reader.GetInt32(4);
-            //                int dislikes = reader.GetInt32(5);
-            //                Game game = new Game(1, "test");
-            //                Category category = new Category("test", 0);
-            //                Video video = new Video(id, author, title, views, likes, dislikes, game, category);
-            //                result.Add(video);
-            //            }
-            //        }
-            //    }
-            //}
-            return result;
-        }
-
-        public List<Video> GetVideosbyGame(Game game)
-        {
-            List<Video> result = new List<Video>();
-            //using (SqlConnection conn = Database.Connection)
-            //{
-            //    //query 
-            //    string query =
-            //        "SELECT * FROM VIDEO WHERE GAME_ID = @gameid ORDER BY Id";
-            //    //opent de connectie vanuit de database classe            
-            //    SqlCommand cmd = new SqlCommand(query, conn);
-            //    cmd.Parameters.Add(new SqlParameter("@gameid", game.ID));
-                
-            //    //uitvoeren van de query
-            //    SqlDataReader reader = cmd.ExecuteReader();
-            //    if (reader.HasRows)
-            //    {
-            //        while (reader.Read())
-            //        {
-
-            //            int id = reader.GetInt32(0);
-            //            User author = new User(1, "Bepulverized", "test", "password", "BePulverized", "test.png",0);
-            //            string title = reader.GetString(3);
-            //            int views = reader.GetInt32(2);
-            //            int likes = reader.GetInt32(4);
-            //            int dislikes = reader.GetInt32(5);
-            //            int gameid = reader.GetInt32(6);
-
-            //            Video newVideo = new Video(id, author, title, views, likes, dislikes, game, new Category("MOBA", 20000));
-            //            result.Add(newVideo);
-            //        }
-            //        // Check wat role is returned, based on role it initializes a different account
-                    
-
-            //    }
-            //}
-            return result;
-        }
-
+        
         public Video Insert(Video video)
         {
             using (SqlConnection connection = new SqlConnection(Database.Connection.ConnectionString))
@@ -113,43 +47,7 @@ namespace Plays.tv.Database
             return video;
         }
 
-        public bool Update(Video video)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Video> GetAllVideosReactions()
-        {
-            List<Video> result = new List<Video>();
-            //using (SqlConnection connection = Database.Connection)
-            //{
-            //    string query =
-            //        "SELECT V.TITLE, COUNT(R.ID) AS 'AANTAL REACTIES' FROM VIDEO V, REACTION R, VIDEO_REACTION VR WHERE R.ID = VR.REACTION_ID AND V.ID = VR.VIDEO_ID GROUP BY V.TITLE HAVING COUNT(R.ID) >= 10 ORDER BY COUNT(R.ID) DESC";
-
-            //    using (SqlCommand command = new SqlCommand(query, connection))
-            //    {
-            //        using (SqlDataReader reader = command.ExecuteReader())
-            //        {
-            //            while (reader.Read())
-            //            {
-            //                string title = reader.GetString(0);
-            //                int Reactions = reader.GetInt32(1);
-            //                Video video = new Video(title,Reactions);
-            //                result.Add(video);
-
-                            
-
-            //            }
-            //        }
-            //    }
-            //}
-            return result;
-        }
+        
 
         public List<Video> GetVideosByUser(User user)
         {

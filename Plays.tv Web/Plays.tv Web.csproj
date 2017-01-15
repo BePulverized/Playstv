@@ -157,6 +157,8 @@
     <Compile Include="Database\IGameContext.cs" />
     <Compile Include="Database\IReactionContext.cs" />
     <Compile Include="Database\IVideoContext.cs" />
+    <Compile Include="Database\Memory\ReactionMemoryContext.cs" />
+    <Compile Include="Database\Memory\VideoMemoryContext.cs" />
     <Compile Include="Database\ReactionSQLContext.cs" />
     <Compile Include="Database\VideoSQLiteContext.cs" />
     <Compile Include="Global.asax.cs">

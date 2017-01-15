@@ -9,7 +9,7 @@ namespace Plays.tv_test
     [TestClass]
     public class VideoRepositoryTest
     {
-        private VideoController videorepo = new VideoController(new VideoMemoryContext());
+        private VideoRepository videorepo = new VideoRepository(new VideoMemoryContext());
         [TestMethod]
         public void GetVideoByUser()
         {

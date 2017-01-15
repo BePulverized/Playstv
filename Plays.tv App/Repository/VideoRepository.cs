@@ -7,23 +7,23 @@ using Plays.tv_App.Database;
 
 namespace Plays.tv_App.Controllers
 {
-    public class GameController
+    public class VideoRepository
     {
         // Deze klasse connect de forms met de database. Eventuele correcties na of voor database worden hier ook gedaan.
-        private IGameContext context;
-        public GameController(IGameContext context)
+        private IVideoContext context;
+        public VideoRepository(IVideoContext context)
         {
             this.context = context;
         }
 
-        public List<Game> GetAll()
+        public List<Video> GetVideosByUser(User user)
         {
-            return context.GetAll();
+            return context.GetVideosByUser(user);
         }
 
-        public List<Category> GetAllCats()
+        public bool Insert(Video video)
         {
-            return context.GetAllCats();
+            return context.Insert(video);
         }
     }
 }

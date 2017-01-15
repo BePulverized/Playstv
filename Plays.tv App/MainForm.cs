@@ -15,20 +15,20 @@ namespace Plays.tv_App
 {
     public partial class MainForm : Form
     {
-        private VideoController video;
+        private VideoRepository video;
         private List<Video> myVideos;
         public MainForm()
         {
             
-                video = new VideoController(new VideoSQLiteContext());
-                myVideos = video.GetVideosByUser((User) AccountController.LoggedUser);
+                video = new VideoRepository(new VideoSQLiteContext());
+                myVideos = video.GetVideosByUser((User) AccountRepository.LoggedUser);
             
             InitializeComponent();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            lbName.Text = AccountController.LoggedUser.Name;
+            lbName.Text = AccountRepository.LoggedUser.Name;
             RefreshForm();
         }
 

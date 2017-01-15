@@ -10,7 +10,7 @@ namespace Plays.tv_test
     [TestClass]
     public class AccountRepositoryTest
     {
-        AccountController accountRepo = new AccountController(new AccountMemoryContext());
+        AccountRepository accountRepo = new AccountRepository(new AccountMemoryContext());
         [TestMethod]
         public void Login()
         {

@@ -8,12 +8,12 @@ using Plays.tv_App.Database;
 
 namespace Plays.tv_App.Controllers
 {
-    public class AccountController
+    public class AccountRepository
     {
         // Deze klasse connect de forms met de database. Eventuele correcties na of voor database worden hier ook gedaan.
         private IAccountContext context;
         public static Account LoggedUser { get; set; }
-        public AccountController(IAccountContext context)
+        public AccountRepository(IAccountContext context)
         {
             this.context = context;
         }
