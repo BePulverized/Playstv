@@ -15,7 +15,9 @@ namespace Plays.tv_App.Database
         List<Video> SearchVideos(string search);
         bool InsertFeedback(Feedback feedback);
         bool View(int id);
+        List<Video> GetAllVideos();
 
+        List<Feedback> GetFeedback();
 
     }
 }

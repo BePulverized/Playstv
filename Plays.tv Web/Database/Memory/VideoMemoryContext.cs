@@ -26,6 +26,11 @@ namespace Plays.tv_Web.Database.Memory
             new Feedback(0,0, 1, 1),
 
         };
+
+        public List<Video> GetAllVideos()
+        {
+            return videos;
+        }
         public bool Insert(Video insertvideo)
         {
             Video returnvideo = null;
@@ -56,7 +61,7 @@ namespace Plays.tv_Web.Database.Memory
         public List<Video> GetRecentVideos()
         {
             List<Video> returnlist = new List<Video>();
-            returnlist.Add(videos[videos.Count]);
+            returnlist.Add(videos[videos.Count -1]);
 
             return returnlist;
         }
@@ -79,7 +84,7 @@ namespace Plays.tv_Web.Database.Memory
             List<Video> returnlist = new List<Video>();
             foreach (Video video in videos)
             {
-                if (video.Title == search)
+                if (video.Title.Contains(search))
                 {
                     returnlist.Add(video);
                 }
@@ -95,7 +100,12 @@ namespace Plays.tv_Web.Database.Memory
 
         public bool View(int id)
         {
-            throw new NotImplementedException();
+            return true;
+        }
+
+        public List<Feedback> GetFeedback()
+        {
+            return feedbacklist;
         }
     }
 }

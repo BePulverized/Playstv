@@ -22,5 +22,6 @@ namespace Plays.tv_Web_Test
             // Check if it was added to the list, list should be 4 then because we added the reaction with video id 0
             Assert.AreEqual(4, reactionrepo.GetReactionsForVideo(0).Count);
         }
+
     }
 }

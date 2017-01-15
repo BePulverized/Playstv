@@ -49,5 +49,15 @@ namespace Plays.tv_App.Controllers
         {
             return context.View(id);
         }
+
+        public List<Video> GetallVideos()
+        {
+            return context.GetAllVideos();
+        }
+
+        public List<Feedback> GetFeedback()
+        {
+            return context.GetFeedback();
+        }
     }
 }

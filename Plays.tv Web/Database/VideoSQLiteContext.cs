@@ -15,8 +15,19 @@ namespace Plays.tv.Database
 {
     public class VideoSQLiteContext:IVideoContext
     {
-        
-        public Video Insert(Video video)
+        public List<Feedback> GetFeedback()
+        {
+            List<Feedback> feedback = new List<Feedback>();
+            return feedback;
+        }
+        public List<Video> GetAllVideos()
+        {
+            List<Video> videos = new List<Video>();
+            return videos;
+        }
+
+
+        public bool Insert(Video video)
         {
             using (SqlConnection connection = new SqlConnection(Database.Connection.ConnectionString))
             {
@@ -44,7 +55,7 @@ namespace Plays.tv.Database
 
                 }
             }
-            return video;
+            return true;
         }
 
         
