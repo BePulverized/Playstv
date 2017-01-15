@@ -8,15 +8,8 @@ namespace Plays.tv_App.Database
 {
     public interface IVideoContext
     {
-        List<Video> GetAll();
-        List<Video> GetVideosbyGame(Game game);
-        Video Insert(Video video);
-        bool Update(Video video);
-        bool Delete(int id);
-
-        List<Video> GetAllVideosReactions();
-
-        List<Video> GetVideosByUser(User user);
+        bool Insert(Video video);
+       List<Video> GetVideosByUser(User user);
         List<Video> GetRecentVideos();
         Video GetVideo(int id);
         List<Video> SearchVideos(string search);
